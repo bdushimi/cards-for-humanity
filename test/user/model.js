@@ -11,6 +11,7 @@ var user;
 
 //The tests
 describe('<Unit Test>', function() {
+    
     describe('Model User:', function() {
         before(function(done) {
             user = new User({

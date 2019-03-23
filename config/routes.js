@@ -26,8 +26,8 @@ module.exports = function(app, passport, auth) {
     // the create a token of the validated credentials
     app.post('/api/auth/login', users.generateJwtOnLogin);
     
-    // a simulated protected route for testing purpose
-    app.get('/api/auth/profile', passport.authenticate('jwt',{session:false}), users.getProfileDetails);
+    // a simulated protected route for testing the jwt strategy
+    app.get('/api/auth', passport.authenticate('jwt',{session:false}), users.getProfileDetails);
 
     app.get('/users/me', users.me);
     app.get('/users/:userId', users.show);

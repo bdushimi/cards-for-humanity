@@ -10,6 +10,12 @@ var mongoose = require('mongoose'),
 
 
 
+var generateJWT = function(_id, _name, secretKey){
+  var token = jwt.sign({ id: _id, name: _name}, secretKey);
+  return 'JWT ' + token
+};
+  
+
 /**
  * Generate a JWT by using the id and name of the user
  */
@@ -22,16 +28,14 @@ exports.generateJwtOnLogin = function(req, res){
           }
           // generate a signed son web token with the contents of user id and username and return it in the response
           if(user){
-              var token = jwt.sign({ id: user._id, name: user.name}, config.secretKey);
-              return res.json({id: user.id, name: user.name, token: 'JWT '+token});
+              var token = generateJWT(user._id, user.name, config.secretKey);
+              res.json({success: true, token: token});
           }else{
-              return res.json({success:false, message:'Invalid email or passwowrd'});
+              res.status(401).send({success: false, msg: 'Authentication failed. Invalid email or passwowrd.'});
           }
       });
   })(req, res);
 };
-
-
 
 
 /**
@@ -41,7 +45,7 @@ exports.generateJwtOnLogin = function(req, res){
 
 exports.getProfileDetails = function (req, res) {
   try {
-    res.send(200, 'User is authorized: '+req.user);
+    res.json({message:'Authorized'});
   }
   catch(error){
       return res.status(500).send('An error occurred: ' + error);
@@ -231,3 +235,5 @@ exports.user = function(req, res, next, id) {
       next();
     });
 };
+
+exports.generateJWT=generateJWT;
