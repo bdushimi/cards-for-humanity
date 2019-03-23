@@ -12,7 +12,7 @@ var mongoose = require('mongoose'),
 
 var generateJWT = function(_id, _name, secretKey){
   var token = jwt.sign({ id: _id, name: _name}, secretKey);
-  return 'JWT ' + token
+  return 'JWT ' + token;
 };
   
 
