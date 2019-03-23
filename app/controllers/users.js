@@ -41,10 +41,10 @@ exports.generateJwtOnLogin = function(req, res){
 
 exports.getProfileDetails = function (req, res) {
   try {
-    res.send(200, 'User is authorized: '+req.user);
+    res.json({success:true, message:'Authorized'});
   }
   catch(error){
-      return res.status(500).send('An error occurred: ' + error);
+    res.json({success:false, message:error});
   }
 };
 

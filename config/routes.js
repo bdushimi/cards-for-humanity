@@ -27,7 +27,7 @@ module.exports = function(app, passport, auth) {
     app.post('/api/auth/login', users.generateJwtOnLogin);
     
     // a simulated protected route for testing purpose
-    app.get('/api/auth/profile', passport.authenticate('jwt',{session:false}), users.getProfileDetails);
+    app.get('/api/auth/users/validate', passport.authenticate('jwt',{session:false}), users.getProfileDetails);
 
     app.get('/users/me', users.me);
     app.get('/users/:userId', users.show);
