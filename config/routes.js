@@ -1,4 +1,5 @@
 var async = require('async');
+var jwt = require('jsonwebtoken');
 
 module.exports = function(app, passport, auth) {
     //User Routes
@@ -19,6 +20,14 @@ module.exports = function(app, passport, auth) {
         failureRedirect: '/signin',
         failureFlash: 'Invalid email or password.'
     }), users.session);
+
+    // a route to issue a token upon a successful login
+    // use the existing local strategy to authenticate the provided credentials
+    // the create a token of the validated credentials
+    app.post('/api/auth/login', users.generateJwtOnLogin);
+    
+    // a simulated protected route for testing purpose
+    app.get('/api/auth/profile', passport.authenticate('jwt',{session:false}), users.getProfileDetails);
 
     app.get('/users/me', users.me);
     app.get('/users/:userId', users.show);

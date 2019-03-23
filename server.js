@@ -39,9 +39,6 @@ var walk = function(path) {
 };
 walk(models_path);
 
-//bootstrap passport config
-require('./config/passport')(passport);
-
 var app = express();
 
 app.use(function(req, res, next){
@@ -50,6 +47,9 @@ app.use(function(req, res, next){
 
 //express settings
 require('./config/express')(app, passport, mongoose);
+
+//bootstrap passport config
+require('./config/passport')(passport);
 
 //Bootstrap routes
 require('./config/routes')(app, passport, auth);

@@ -5,9 +5,10 @@ var express = require('express'),
     mongoStore = require('connect-mongo')(express),
     flash = require('connect-flash'),
     helpers = require('view-helpers'),
-    config = require('./config');
+    config = require('../config/config');
 
 module.exports = function(app, passport, mongoose) {
+
     app.set('showStackError', true);
 
     //Should be placed before express.static
