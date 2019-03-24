@@ -1,3 +1,4 @@
+BETTER CODE HUB COMPLIANCE BADGE
 [![BCH compliance](https://bettercodehub.com/edge/badge/bdushimi/cards-for-humanity?branch=master)](https://bettercodehub.com/)
 
 Cards for Humanity - [http://cfh.io](http://cfh.io)
