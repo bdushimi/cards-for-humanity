@@ -1,3 +1,5 @@
+[![BCH compliance](https://bettercodehub.com/edge/badge/bdushimi/cards-for-humanity?branch=master)](https://bettercodehub.com/)
+
 Cards for Humanity - [http://cfh.io](http://cfh.io)
 ===========
 Cards for Humanity is a fast-paced online version of the popular card game, Cards Against Humanity, that gives you the opportunity to donate to children in need - all while remaining as despicable and awkward as you naturally are.
